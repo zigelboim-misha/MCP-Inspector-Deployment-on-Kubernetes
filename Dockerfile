@@ -7,7 +7,7 @@ WORKDIR /app
 # Set environment variables for custom ports and host binding
 ENV CLIENT_PORT=8080
 ENV SERVER_PORT=9000
-ENV HOST=0.0.0.0
+ENV HOST=127.0.0.1
 
 # Expose the custom ports
 EXPOSE 8080 9000
