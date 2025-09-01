@@ -30,7 +30,7 @@ spec:
         - name: SERVER_PORT
           value: "9000"
         - name: HOST
-          value: "0.0.0.0"
+          value: "127.0.0.1"
         resources:
           limits:
             memory: "512Mi"
