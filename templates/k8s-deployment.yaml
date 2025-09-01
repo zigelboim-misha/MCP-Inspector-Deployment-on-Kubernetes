@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-inspector
+  namespace: mcp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mcp-inspector
+  template:
+    metadata:
+      labels:
+        app: mcp-inspector
+    spec:
+      containers:
+      - name: mcp-inspector
+        image: zigelboimmisha/mcp-inspector
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+          name: client
+        - containerPort: 9000
+          protocol: TCP
+          name: proxy
+        env:
+        - name: CLIENT_PORT
+          value: "8080"
+        - name: SERVER_PORT
+          value: "9000"
+        - name: HOST
+          value: "0.0.0.0"
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
